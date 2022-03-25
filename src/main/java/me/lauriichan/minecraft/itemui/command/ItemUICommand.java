@@ -101,7 +101,7 @@ public final class ItemUICommand implements ICommandSource {
 
     private void onItemGet(CommandContext<BukkitSource> context) {
         Optional<Player> option = context.getSource().getPlayerAsOptional();
-        Player target = context.get("target", Player.class);
+        Player target = context.has("target") ? context.get("target", Player.class) : null;
         BukkitSource source = context.getSource();
         boolean muted = context.getOrDefault("muted", false);
         if (option.isEmpty() && target == null) {
